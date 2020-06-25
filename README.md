@@ -1,3 +1,2 @@
-# Project 1
+# book reviews
 
-Web Programming with Python and JavaScript
