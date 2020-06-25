@@ -1,0 +1,88 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+ Book RESULT
+{% endblock %}
+
+{% block body %}
+
+      <img src="http://covers.openlibrary.org/b/isbn/{{bookId[0]['isbn']}}-M.jpg" class="mx-auto d-block">
+
+
+
+    <div class="container my-con">
+      <h1 class="text-center">Review Book</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Book Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Year</th>
+            <th scope="col">Book ISBN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td>{{bookId[0]['title']}}</td>
+          <td>{{bookId[0]['author']}}</td>
+          <td>{{bookId[0]['year']}}</td>
+          <td>{{bookId[0]['isbn']}}</td>
+        </tbody>
+
+      </table>
+      </div>
+
+    <div class="container">
+      <h4>Good Reads Review Information</h4>
+      <table class="table">
+      <thead>
+        <th scope="col">Average Rating</th>
+        <th scope="col">Total Ratings</th>
+      </thead>
+
+      <tbody>
+        <td>{{average_rating}}</td>
+        <td>{{rating_count}}</td>
+      </tbody>
+  </table>
+  <div class="">
+    <a href="https://www.goodreads.com/search?q={{bookId[0]['title']}}" class="btn btn-success">Goodreads page</a>
+  </div>
+  </div>
+
+
+
+
+<div class="container">
+<!-- REVIEW FORM -->
+  <form method="POST" class="form-border">
+      <div class="form-row col-sm">
+        <div class="form-group col-sm">
+                   <label for="rating"><strong>Rate this book</strong></label>
+                   <select id="rating" name="rating" class="form-control" required>
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                       <option value="5">5</option>s
+                   </select>
+               </div>
+             </div>
+
+
+      <div class="form-group col-sm-6">
+        <label for="rating"><strong>Leave a comment</strong></label>
+                   <div class="input-group">
+
+                       <div class="input-group-prepend">
+                           <span class="input-group-text">Say something</span>
+                       </div>
+                       <textarea name="comment" id="comment" class="form-control" rows="1" required></textarea>
+                   </div>
+               </div>
+               <div class="form-group col-sm">
+                   <button class="btn btn-success" type="submit">Submit</button>
+               </div>
+       </form>
+</div>
+{% endblock %}

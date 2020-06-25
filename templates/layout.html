@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+       <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+
+    <body>
+    <!--<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Book Review</a>
+            </div> -->
+
+      <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="/">Book Review</a>
+
+
+        {% if 'username' in session and session['usename'] != False %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout/"><span class="glyphicon glyphicon-log-out"></span> logout</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/search/"><span class="glyphicon glyphicon-search"></span>search</a></li>
+            </ul>
+
+        {% else %}
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/register/">Register</a></li>
+        </ul>
+
+        {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="alert alert-warning">
+                 {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block body %}
+        {% endblock %}
+    </div>
+    </body>
+</html>
